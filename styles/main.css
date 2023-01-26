@@ -1,0 +1,98 @@
+[data-id="app-content"] {
+  padding: 0;
+}
+
+::selection {
+  background-color: #fff2;
+}
+
+:root {
+  --app-text: #caced5;
+  --app-bg: #1c2230;
+  --font-raleway: Raleway;
+  --font-open-sans: 'Open Sans';
+}
+
+:root {
+  color: var(--app-text);
+  background-color: var(--app-bg);
+  font-family: var(--font-open-sans);
+}
+
+/*
+  Put scroll on `[data-id="app"]`
+  to allow setting properly a max-width on `[data-id="app-content"]`
+*/
+[data-id="app"] {
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
+}
+
+[data-id="app-content"] {
+  align-self: center;
+  max-width: 1600px;
+  height: auto;
+  overflow: visible;
+
+  padding-top: 1rem;
+}
+
+
+
+.button-component {
+  padding-inline: 2rem;
+  padding-block: 1rem;
+
+  border-radius: 2em;
+  background-color: #4fc4d5;
+  color: #fff;
+}
+
+.navbar-component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-block: 3rem;
+  padding-inline: 4rem;
+}
+
+.navbar-component > .links {
+  margin-left: auto;
+
+  display: flex;
+  column-gap: 4rem;
+}
+
+
+.main-section {
+  display: flex;
+
+  background-image: url('../images/bg-curvy-desktop.svg');
+  background-position: bottom;
+  background-size: 100% auto;
+
+  padding-bottom: 10rem;
+}
+
+.main-section > .wrapper {
+  margin-inline: auto;
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.5rem;
+
+  text-align: center;
+}
+
+.main-section > .wrapper > .imagesection {
+
+}
+
+.main-section > .wrapper > .button-component {
+  padding-inline: 4rem;
+}
