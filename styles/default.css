@@ -40,7 +40,9 @@
 
 
 /* Normalize background-image */
-* {
+*,
+*::before,
+*::after {
   background-repeat: no-repeat;
 }
 
