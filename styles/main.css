@@ -264,6 +264,10 @@
   border-radius: 50%;
   background-color: #6adcd4;
 
+  background-image: url('../images/arrow.svg');
+  background-size: 160%;
+  background-position: center;
+
   transition: background-color 0.2s;
 }
 
