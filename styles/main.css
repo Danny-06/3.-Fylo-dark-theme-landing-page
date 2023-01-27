@@ -154,19 +154,40 @@
 /* Main Section */
 
 .main-section {
-  display: flex;
-
-  background-image: url('../images/bg-curvy-desktop.svg');
-  background-position: bottom;
-  background-size: 100% auto;
+  position: relative;
 }
 
 .main-section ~ section {
   background-color: #181F2B;
 }
 
+.main-section > .background {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.main-section > .background > .main {
+  flex-grow: 1;
+
+  background-image: url('../images/bg-curvy-desktop.svg');
+  background-size: contain;
+  background-position: center bottom;
+}
+
+.main-section > .background > .base {
+  flex-basis: 0;
+
+  background-color: #181F2B;
+}
+
 .main-section > .wrapper {
-  flex-shrink: 1;
+  /* Create stacking context to avoid bg overlap */
+  isolation: isolate;
 
   margin-inline: auto;
   max-width: 43rem;
@@ -206,6 +227,14 @@
 
 @media (max-width: 53.125em) {
 
+  .main-section > .background > .main {
+    background-image: url('../images/bg-curvy-mobile.svg');
+  }
+
+  .main-section > .background > .base {
+    flex-basis: calc(60% - 52vw);
+  }
+
   .main-section > .wrapper > .title {
     font-size: 1.7rem;
     line-height: 2.5rem;
@@ -216,6 +245,24 @@
     line-height: 1.7rem;
   }
 
+}
+
+@media (max-width: 31.25em) {
+  .main-section > .background > .base {
+    flex-basis: calc(60% - 40vw);
+  }
+}
+
+@media (max-width: 25em) {
+  .main-section > .background > .base {
+    flex-basis: calc(60% - 20vw);
+  }
+}
+
+@media (max-width: 23.125em) {
+  .main-section > .background > .base {
+    flex-basis: calc(60% - 8vw)
+  }
 }
 
 
