@@ -27,12 +27,14 @@
     all: unset;
   }
 
-  /*
-    Allow <a> to be styled as a block element to be able to use the outline for accessibility
-    while maintaining its inline behavior
-  */
   a {
+    /*
+      Allow <a> to be styled as a block element to be able to use the outline for accessibility
+      while maintaining its inline behavior
+    */
     display: inline-block;
+
+    cursor: pointer;
   }
 }
 
@@ -113,10 +115,6 @@ body, [data-id="app"] {
 
 [hidden] {
   display: none !important;
-}
-
-a {
-  cursor: pointer;
 }
 
 img, canvas, svg, picture,
