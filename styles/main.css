@@ -27,6 +27,7 @@
   display: flex;
   flex-direction: column;
 
+  scroll-behavior: smooth;
   overflow: auto;
 }
 
@@ -39,16 +40,52 @@
   padding-top: 1rem;
 }
 
+[data-id="app-content"] > section {
+  padding-bottom: 10rem;
+}
 
+
+/* Button Component */
 
 .button-component {
+  min-width: 13rem;
+
   padding-inline: 2rem;
   padding-block: 1rem;
 
   border-radius: 2em;
   background-color: #4fc4d5;
+
   color: #fff;
+  text-align: center;
+
+  transition: background-color 0.2s, box-shadow 0.2s;
 }
+
+@media (hover: hover) {
+  .button-component:hover {
+    background-color: #288acf;
+
+    box-shadow: 5px 5px 10px #0004;
+  }
+}
+
+.button-component:is(:active, :focus-visible) {
+  background-color: #288acf;
+
+  box-shadow: 5px 5px 10px #0004;
+
+  transition-duration: 0s;
+}
+
+.button-component:active:active {
+  background-color: #1f3466;
+
+  transition-duration: 0s;
+}
+
+
+/* Navbar */
 
 .navbar-component {
   display: flex;
@@ -66,6 +103,20 @@
   column-gap: 4rem;
 }
 
+@media (hover: hover) {
+  .navbar-component > .links > a:hover {
+    color: #fff;
+    text-decoration-line: underline;
+  }
+}
+
+.navbar-component > .links > a:is(:focus-visible, :active) {
+  color: #fff;
+  text-decoration-line: underline;
+}
+
+
+/* Main Section */
 
 .main-section {
   display: flex;
@@ -73,26 +124,457 @@
   background-image: url('../images/bg-curvy-desktop.svg');
   background-position: bottom;
   background-size: 100% auto;
+}
 
-  padding-bottom: 10rem;
+.main-section ~ section {
+  padding-inline: 1rem;
+
+  background-color: #181F2B;
 }
 
 .main-section > .wrapper {
+  flex-shrink: 1;
+
   margin-inline: auto;
-  max-width: 500px;
+  max-width: 43rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 1.5rem;
+  row-gap: 1.9rem;
 
   text-align: center;
 }
 
 .main-section > .wrapper > .imagesection {
+  max-width: 100%;
+}
 
+.main-section > .wrapper > .title {
+  color: #fff;
+  font-size: 2.5rem;
+  font-family: var(--font-raleway);
+  line-height: 3.7rem;
+}
+
+.main-section > .wrapper > .description {
+  max-width: 38rem;
+
+  font-size: 1.2rem;
+  line-height: 1.8rem;
 }
 
 .main-section > .wrapper > .button-component {
+  min-width: 17rem;
+
   padding-inline: 4rem;
+}
+
+
+/* Features Section */
+
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, 25rem));
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+}
+
+.features-section > .feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.5rem;
+
+  text-align: center;
+}
+
+.features-section > .feature > .image {}
+
+.features-section > .feature > .title {
+  font-size: 1.2rem;
+}
+
+.features-section > .feature > .description {
+  font-size: 0.9rem;
+}
+
+
+/* Info Section */
+
+.info-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 3rem;
+}
+
+.info-section > .image {
+  margin-bottom: 1rem;
+  flex-shrink: 1;
+}
+
+.info-section > .image > img {
+  max-width: 100%;
+}
+
+.info-section > .info {
+  flex-basis: 34rem;
+  flex-shrink: 1;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.info-section > .info > .title {
+  color: #fff;
+  font-size: 2.7rem;
+}
+
+.info-section > .info > .description {}
+
+.info-section > .info > .link {
+  align-self: flex-start;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2em;
+
+  color: #89c3c4;
+
+  transition: color 0.2s;
+}
+
+
+.info-section > .info > .link > .text {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5em;
+}
+
+.info-section > .info > .link > .text > .ball {
+  margin-top: 0.2em;
+
+  width: 0.8em;
+  aspect-ratio: 1 / 1;
+
+  border-radius: 50%;
+  background-color: #6adcd4;
+
+  transition: background-color 0.2s;
+}
+
+.info-section > .info > .link > .underline {
+  width: 100%;
+  height: 1px;
+
+  background-color: currentColor;
+}
+
+@media (hover: hover) {
+
+  .info-section > .info > .link:hover {
+    color: unset;
+  }
+
+  .info-section > .info > .link:hover > .text > .ball {
+    background-color: #fff;
+  }
+
+}
+
+.info-section > .info > .link:is(:focus-visible, :active) {
+  color: unset;
+}
+
+.info-section > .info > .link:is(:focus-visible, :active) > .text > .ball {
+  background-color: #fff;
+}
+
+
+/* Quotes Section */
+
+[data-id="app-content"] > .quotes-section {
+  padding-bottom: 5rem;
+}
+
+.quotes-section {
+  display: flex;
+  justify-content: center;
+  column-gap: 3rem;
+}
+
+.quotes-section > .quote {
+  flex-basis: 25rem;
+  flex-shrink: 1;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+
+  padding-inline: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+
+  border-radius: 0.3rem;
+  background-color: #21293c;
+
+  box-shadow: 10px 10px 0px #1c2230;
+}
+
+.quotes-section {
+  /*
+    Make sure the `::before` is rendered inside the element when using
+    `z-index: 1`
+  */
+  isolation: isolate;
+}
+
+.quotes-section > .quote:first-child {
+  position: relative;
+}
+
+.quotes-section > .quote:first-child::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  transform: translate(-10px, -70%);
+
+  width: 55px;
+  height: 45px;
+
+  background-image: url('../images/bg-quotes.png');
+  background-size: contain;
+}
+
+
+.quotes-section > .quote > .user-quote {
+  display: flex;
+  align-items: center;
+  column-gap: 0.7rem;
+}
+
+.quotes-section > .quote > .user-quote > .image {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+.quotes-section > .quote > .user-quote > .info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2rem;
+
+  font-size: 0.9rem;
+}
+
+.quotes-section > .quote > .user-quote > .info > .name {
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.quotes-section > .quote > .user-quote > .info > .role {
+  font-size: 0.8em;
+}
+
+
+/* Early Access Section */
+
+[data-id="app-content"] > .early-access-section {
+  padding-bottom: 0;
+}
+
+.early-access-section {
+  display: flex;
+}
+
+.early-access-section > .form-component {
+  transform: translateY(40%);
+
+  margin: auto;
+
+  max-width: 60rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+
+  padding-inline: 6rem;
+  padding-block: 3rem;
+
+  border-radius: 0.5rem;
+  background-color: #1c2230;
+
+  box-shadow: 5px 5px 10px 0px #0004;
+
+  text-align: center;
+}
+
+.early-access-section > .form-component > .info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.early-access-section > .form-component > .info > .title {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.early-access-section > .form-component > .emailaction {
+  align-self: stretch;
+
+  display: flex;
+  column-gap: 1rem;
+}
+
+.early-access-section > .form-component > .emailaction > .email {
+  all: unset;
+
+  display: block;
+
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  padding-inline: 3rem;
+  padding-block: 1rem;
+
+  border-radius: 2rem;
+  background-color: #fff;
+
+  color: #000;
+  text-align: start;
+}
+
+.early-access-section > .form-component > .emailaction > .email::selection {
+  background-color: #0005;
+}
+
+.early-access-section > .form-component > .emailaction > .email::placeholder {
+  color: #aaa;
+}
+
+.early-access-section > .form-component > .emailaction > .button-component {
+  flex-shrink: 1;
+}
+
+
+/* Footer */
+
+[data-id="app-content"] > .footer-component {
+  padding-top: 10rem;
+}
+
+.footer-component {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 2rem;
+
+  padding-inline: 6rem;
+  padding-bottom: 5rem;
+
+  background-color: #0c1524;
+}
+
+.footer-component > .links {
+  align-self: stretch;
+
+  display: flex;
+  column-gap: 5rem;
+}
+
+.footer-component > .links > * {
+  flex-shrink: 1;
+}
+
+.footer-component > .links > .location {
+  display: flex;
+  column-gap: 1.3rem;
+  align-items: flex-start;
+}
+
+.footer-component > .links > .location > .image {
+  margin-top: 0.4rem;
+}
+
+.footer-component > .links > .location > .description {
+  width: 22rem;
+}
+
+.footer-component > .links > .contact {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.footer-component > .links > .contact > .item {
+  display: flex;
+  column-gap: 1.5rem;
+}
+
+.footer-component > .links > .info {
+  margin-inline: auto;
+
+  display: flex;
+  column-gap: 5rem;
+}
+
+.footer-component > .links > .info > .col {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.footer-component > .links > .info > .col > a {
+  width: 10ch;
+}
+
+@media (hover: hover) {
+  .footer-component > .links > .info > .col > a:hover {
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+.footer-component > .links > .info > .col > a:is(:focus-visible, :active) {
+  color: #fff;
+  font-weight: bold;
+}
+
+.footer-component > .links > .social {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 1rem;
+}
+
+.footer-component > .links > .social > a {
+  padding: 7px;
+
+  border: solid 2px currentColor;
+  border-radius: 50%;
+
+  color: #fff;
+}
+
+@media (hover: hover) {
+  .footer-component > .links > .social > a:hover {
+    color: #89c3c4;
+  }
+}
+
+.footer-component > .links > .social > a:is(:focus-visible, :active) {
+  color: #89c3c4;
 }
